@@ -1,0 +1,2 @@
+source:
+  - any: ['src/**/*']

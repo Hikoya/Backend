@@ -1,0 +1,47 @@
+<p>Reference No: #{{id}}</p>
+<p>Hi {{extn email}},</p>
+<p>Your request to book
+  <strong>{{venue.name}}</strong>
+  has been approved. Here are the details:</p>
+<p>CCA: <strong>{{cca}}</strong></p>
+<table class="tg" style="border-spacing: 0">
+  <thead>
+    <tr>
+      <th
+        style="border: 1px solid #000000; border-collapse: collapse; padding: 15px;"
+      >No</th>
+      <th
+        style="border: 1px solid #000000; border-collapse: collapse; padding: 15px;"
+      >Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each bookingIds}}
+      <tr>
+        <td
+          style="border: 1px solid #000000; border-collapse: collapse; padding: 15px;"
+        >{{inc @index}}</td>
+        <td
+          style="border: 1px solid #000000; border-collapse: collapse; padding: 15px;"
+        ><p>Booking ID: {{this.id}}</p>
+          <p>Date:
+            {{this.date}}</p><p>Time Slot:
+            {{this.timingSlot}}</p><p>Notes:
+            {{this.notes}}</p></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<p>Please ensure cleanliness of the venue after the end of your event. If any
+  loss or damage to furnishings, equipment, and/or facilities is found, you may
+  be held liable for it.</p>
+
+<p>For booking cancellations, please drop an email to secretary.kevii@u.nus.edu
+  with a screenshot of this email. Should you be found booking and not utilising
+  the venue at the stipulated time, your booking priority will be penalised.</p>
+
+<p>Thanks and enjoy your venue usage!</p>
+
+<p>Cheers,<br />
+  65th JCRC</p>

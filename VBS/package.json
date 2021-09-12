@@ -1,0 +1,59 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "KE Web backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "lint": "eslint ./",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=8.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keviiweb/backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keviiweb/backend/issues"
+  },
+  "homepage": "https://github.com/keviiweb/backend#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-http-context": "^1.2.4",
+    "handlebars": "^4.7.7",
+    "helmet": "^4.1.1",
+    "http-status": "^1.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "luxon": "^2.0.1",
+    "mongoose": "^5.10.5",
+    "multer": "^1.4.3",
+    "nanoid": "^3.1.12",
+    "node-telegram-bot-api": "^0.54.0",
+    "nodemailer": "^6.6.3",
+    "yup": "^0.29.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.3.2"
+  }
+}

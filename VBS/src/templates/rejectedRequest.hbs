@@ -1,0 +1,39 @@
+<p>Reference No: #{{id}}</p>
+<p>Hi {{extn email}},</p>
+<p>Your booking request for
+  <strong>{{venueName}}</strong>
+  was unsuccessful.</p>
+
+<table class="tg" style="border-spacing: 0">
+  <thead>
+    <tr>
+      <th
+        style="border: 1px solid #000000; border-collapse: collapse; padding: 15px;"
+      >Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td
+        style="border: 1px solid #000000; border-collapse: collapse; padding: 15px;"
+      >
+        <p>Venue: {{venueName}}</p>
+        <p>Date: {{date}}</p>
+        <p>Time Slots:</p>
+        <ul>
+          {{#each timingSlots}}
+            <li>{{this}}</li>
+          {{/each}}
+        </ul>
+        <p>CCA: <strong>{{cca}}</strong></p>
+        <p>Notes: {{notes}}</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>You may check the Venue Booking System for other available venues or time
+  slots.</p>
+
+<p>Cheers,<br />
+  65th JCRC</p>
