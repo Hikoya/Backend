@@ -1,6 +1,3 @@
-
-# Backend
-Repository for the Backend team of KEWEB  
 # Venue Booking System Backend
 
 Documentation: https://fangpinsern.github.io/britannic/
