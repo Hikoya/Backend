@@ -1,7 +1,6 @@
-<<<<<<< HEAD
+
 # Backend
 Repository for the Backend team of KEWEB  
-=======
 # Venue Booking System Backend
 
 Documentation: https://fangpinsern.github.io/britannic/
@@ -47,4 +46,4 @@ Rules:
 2. DONT commit or push to master
 3. NEVER commit or push .env file.
 4. When in doubt ask :)
->>>>>>> britannic/master
+
