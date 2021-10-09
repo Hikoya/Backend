@@ -45,7 +45,7 @@ const cancelBookingRequestController = async (req, res, next) => {
   // only can cancel 1 day in advance. in SGT
   if (unixTimeNow > bookingRequest.date) {
     const message =
-      "Too late to cancel now. Cancellations can only be done lastest 1 day in advance";
+      "Too late to cancel now. Cancellations can only be done latest 1 day in advance";
     return next(errorFormatter(message, BAD_REQUEST));
   }
 

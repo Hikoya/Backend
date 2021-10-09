@@ -10,6 +10,10 @@ const { errorFormatter } = require("../../utils/errorFormatter");
 const { approveTemplate } = require("../../templates/htmlTemplate");
 const { convertUnixToDateString } = require("../../utils/dateToUnix");
 const { mapSlotsToTiming } = require("../../utils/mapSlotsToTiming");
+const {
+  approvalBookingRequestMessageBuilder,
+  sendMessageToChannel,
+} = require("../../services/telegramBot.service");
 
 // check if booking request exist
 // check if booking request is already approved
@@ -164,7 +168,18 @@ const approveBookingRequestController = async (req, res, next) => {
   } catch (err) {
     return next(err);
   }
-
+  
+  
+  try {
+    const tele_message = approvalBookingRequestMessageBuilder(savedBookingRequest);
+    sendMessageToChannel(tele_message);
+  } catch (err) {
+    /* eslint-disable no-console */
+    console.log(err);
+    console.log("Channel message not sent");
+    /* eslint-enable no-console */
+  }
+  
   return res.status(ACCEPTED).json({
     bookingRequestId: savedBookingRequest.id,
     bookingIds: newBookingIds,

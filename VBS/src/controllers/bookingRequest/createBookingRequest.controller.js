@@ -127,13 +127,14 @@ const createBookingRequestController = async (req, res, next) => {
     return next(err);
   }
 
+  /*
   try {
     const message = venueBookingRequestMessageBuilder(savedBookingRequest);
     sendMessageToChannel(message);
   } catch (err) {
     // eslint-disable-next-line no-console
     console.log("Channel message not sent");
-  }
+  }*/
 
   return res
     .status(ACCEPTED)
