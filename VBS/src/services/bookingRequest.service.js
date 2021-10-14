@@ -10,6 +10,7 @@ const { mapSlotsToTiming } = require("../utils/mapSlotsToTiming");
 const { sendEmail } = require("./email.service");
 const {
   instantBookingRequestMessageBuilder,
+  rejectBookingRequestMessageBuilder,
   sendMessageToChannel,
 } = require("./telegramBot.service");
 
@@ -86,7 +87,17 @@ const rejectBookingRequestInTheseSlots = async (
       request.toString(),
       html
     );
-
+	
+	try {
+	  const message = rejectBookingRequestMessageBuilder(savedRequest);
+	  sendMessageToChannel(message);
+	} catch (err) {
+	  /* eslint-disable no-console */
+	  console.log(err);
+	  console.log("Channel message not sent");
+	  /* eslint-enable no-console */
+	}
+	
     rejectedBookingRequestIds.push(savedRequest.id);
   }
 
@@ -234,8 +245,8 @@ const approveBookingRequestById = async (bookingRequestId) => {
   );
 
   try {
-    const message = instantBookingRequestMessageBuilder(savedBookingRequest);
-    sendMessageToChannel(message);
+    const tele_message = instantBookingRequestMessageBuilder(savedBookingRequest);
+    sendMessageToChannel(tele_message);
   } catch (err) {
     /* eslint-disable no-console */
     console.log(err);

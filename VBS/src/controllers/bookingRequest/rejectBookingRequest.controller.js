@@ -5,6 +5,10 @@ const { rejectedTemplate } = require("../../templates/htmlTemplate");
 const { convertUnixToDateString } = require("../../utils/dateToUnix");
 const { errorFormatter } = require("../../utils/errorFormatter");
 const { mapSlotsToTiming } = require("../../utils/mapSlotsToTiming");
+const {
+  rejectBookingRequestMessageBuilder,
+  sendMessageToChannel,
+} = require("../../services/telegramBot.service");
 
 const rejectBookingRequestController = async (req, res, next) => {
   const { body } = req;
@@ -74,7 +78,17 @@ const rejectBookingRequestController = async (req, res, next) => {
   } catch (err) {
     return next(err);
   }
-
+  
+  try {
+    const tele_message = rejectBookingRequestMessageBuilder(savedBookingRequest);
+    sendMessageToChannel(tele_message);
+  } catch (err) {
+    /* eslint-disable no-console */
+    console.log(err);
+    console.log("Channel message not sent");
+    /* eslint-enable no-console */
+  }
+  
   return res.status(ACCEPTED).json({
     bookingRequestId: savedBookingRequest.id,
   });
