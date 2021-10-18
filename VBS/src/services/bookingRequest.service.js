@@ -168,6 +168,7 @@ const getConflictingBookingRequests = async (
 
 // very dangerous.. need to find a way to refactor it
 const approveBookingRequestById = async (bookingRequestId) => {
+	
   const bookingRequest = await BookingRequest.findOne({
     _id: bookingRequestId,
   });
@@ -176,11 +177,13 @@ const approveBookingRequestById = async (bookingRequestId) => {
     email,
     venue,
     date,
-    bookingTimeSlots,
     notes,
     isApproved,
     isRejected,
-  } = bookingRequest.email;
+  } = bookingRequest;
+  
+  const bookingTimeSlots = bookingRequest.timingSlots;
+  console.log(bookingTimeSlots);
 
   if (isApproved) {
     throw new Error(
@@ -252,7 +255,7 @@ const approveBookingRequestById = async (bookingRequestId) => {
   
    await sendEmail(
     email,
-    "[APPROVED] Your request of booking has been approved",
+    "[INSTANT APPROVED] Your request of booking has been approved",
     savedBookingRequest.toString(),
     html
   );

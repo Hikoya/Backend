@@ -93,6 +93,8 @@ const createBookingRequestController = async (req, res, next) => {
   const instantBook = isVenueIdValid.isInstantBook;
 
   if (instantBook) {
+	console.log("INSTANT BOOKING VENUE");
+	console.log(savedBookingRequest.id);
     const approvedBookingRequest = await approveBookingRequestById(
       savedBookingRequest.id
     );
