@@ -132,18 +132,6 @@ const approveBookingRequestController = async (req, res, next) => {
     cca: savedBookingRequest.cca || "Personal",
   });
 
-  // send email of approval
-  try {
-    await sendEmail(
-      email,
-      "[APPROVED] Your request of booking has been approved",
-      savedBookingRequest.toString(),
-      html
-    );
-  } catch (err) {
-    return next(err);
-  }
-
   // reject all request that has this slot
   let rejectedBookingRequestsIds = [];
   try {
@@ -173,11 +161,24 @@ const approveBookingRequestController = async (req, res, next) => {
   try {
     const tele_message = approvalBookingRequestMessageBuilder(savedBookingRequest);
     sendMessageToChannel(tele_message);
+	console.log("Approved Message sent");
   } catch (err) {
     /* eslint-disable no-console */
     console.log(err);
     console.log("Channel message not sent");
     /* eslint-enable no-console */
+  }
+  
+  // send email of approval
+  try {
+    await sendEmail(
+      email,
+      "[APPROVED] Your request of booking has been approved",
+      savedBookingRequest.toString(),
+      html
+    );
+  } catch (err) {
+    return next(err);
   }
   
   return res.status(ACCEPTED).json({

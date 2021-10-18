@@ -11,6 +11,8 @@ const channel_id = TELEGRAM_BOT_CHANNEL_ID;
 const bot = new TelegramBot(token, { polling: true });
 
 const sendMessageToChannel = (message) => {
+  console.log("SEND MESSAGE TO TELEGRAM CHANNEL");
+  
   bot.sendMessage(channel_id, message).catch((err) => {
     console.log("Channel message not sent", err);
   });

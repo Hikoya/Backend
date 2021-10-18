@@ -237,22 +237,25 @@ const approveBookingRequestById = async (bookingRequestId) => {
     bookingIds: bookings,
     cca: savedBookingRequest.cca || "Personal",
   });
-  await sendEmail(
-    email,
-    "[APPROVED] Your request of booking has been approved",
-    savedBookingRequest.toString(),
-    html
-  );
+  
 
   try {
     const tele_message = instantBookingRequestMessageBuilder(savedBookingRequest);
     sendMessageToChannel(tele_message);
+	console.log("Instant approval Message sent");
   } catch (err) {
     /* eslint-disable no-console */
     console.log(err);
     console.log("Channel message not sent");
     /* eslint-enable no-console */
   }
+  
+   await sendEmail(
+    email,
+    "[APPROVED] Your request of booking has been approved",
+    savedBookingRequest.toString(),
+    html
+  );
 
   return {
     bookingRequestId: savedBookingRequest.id,
