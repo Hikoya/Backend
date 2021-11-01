@@ -4,7 +4,7 @@ const {
 } = require("../controllers/recurringBooking/createRecurringBooking.controller");
 const {
   getAllRecurringBookingController,
-} = require("../controllers/recurringBooking/getAllRecurringBoookings.controller");
+} = require("../controllers/recurringBooking/getAllRecurringBookings.controller");
 const { dummyAuthMiddleware } = require("../middlewares/dummyAuth.middleware");
 const {
   createRecurringBookingSchema,

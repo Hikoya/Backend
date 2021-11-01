@@ -11,6 +11,8 @@ const channel_id = TELEGRAM_BOT_CHANNEL_ID;
 const bot = new TelegramBot(token, { polling: true });
 
 const sendMessageToChannel = (message) => {
+  console.log("SEND MESSAGE TO TELEGRAM CHANNEL");
+  
   bot.sendMessage(channel_id, message).catch((err) => {
     console.log("Channel message not sent", err);
   });
@@ -40,8 +42,12 @@ const approvalBookingRequestMessageBuilder = (bookingRequest) => {
     (timeSlot) => timingSlotNumberToTimingMapping[timeSlot]
   );
   const cca = bookingRequest.cca || "Personal";
-
-  const returnMessage = `[APPROVED]\nEmail: ${email}\ncca: ${cca}\nvenueName: ${venueName}\ndate: ${date}\ntimeSlots: ${timeSlots}\nnotes: ${notes} `;
+  
+  let hide = email.split("@")[0].length - 5;//<-- number of characters to hide
+  var r = new RegExp(".{"+hide+"}@", "g")
+  const masked_email = email.replace(r, "***@" );
+  
+  const returnMessage = `[APPROVED]\nEmail: ${masked_email}\ncca: ${cca}\nvenueName: ${venueName}\ndate: ${date}\ntimeSlots: ${timeSlots}`;
 
   return returnMessage;
 	
@@ -56,7 +62,11 @@ const rejectBookingRequestMessageBuilder = (bookingRequest) => {
   );
   const cca = bookingRequest.cca || "Personal";
 
-  const returnMessage = `[REJECTED]\nEmail: ${email}\ncca: ${cca}\nvenueName: ${venueName}\ndate: ${date}\ntimeSlots: ${timeSlots}\nnotes: ${notes} `;
+  let hide = email.split("@")[0].length - 5;//<-- number of characters to hide
+  var r = new RegExp(".{"+hide+"}@", "g")
+  const masked_email = email.replace(r, "***@" );
+  
+  const returnMessage = `[REJECTED]\nEmail: ${masked_email}\ncca: ${cca}\nvenueName: ${venueName}\ndate: ${date}\ntimeSlots: ${timeSlots}`;
 
   return returnMessage;
 	
@@ -71,7 +81,11 @@ const instantBookingRequestMessageBuilder = (bookingRequest) => {
   );
   const cca = bookingRequest.cca || "Personal";
 
-  const returnMessage = `[INSTANT APPROVAL]\nEmail: ${email}\ncca: ${cca}\nvenueName: ${venueName}\ndate: ${date}\ntimeSlots: ${timeSlots}\nnotes: ${notes} `;
+  let hide = email.split("@")[0].length - 5;//<-- number of characters to hide
+  var r = new RegExp(".{"+hide+"}@", "g")
+  const masked_email = email.replace(r, "***@" );
+  
+  const returnMessage = `[INSTANT APPROVAL]\nEmail: ${masked_email}\ncca: ${cca}\nvenueName: ${venueName}\ndate: ${date}\ntimeSlots: ${timeSlots}`;
 
   return returnMessage;
 };

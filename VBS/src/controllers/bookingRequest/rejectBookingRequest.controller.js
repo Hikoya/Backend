@@ -68,7 +68,20 @@ const rejectBookingRequestController = async (req, res, next) => {
     notes: savedBookingRequest.notes,
   });
 
+ 
+  
   try {
+    const tele_message = rejectBookingRequestMessageBuilder(savedBookingRequest);
+    sendMessageToChannel(tele_message);
+	console.log("Rejected Message sent");
+  } catch (err) {
+    /* eslint-disable no-console */
+    console.log(err);
+    console.log("Channel message not sent");
+    /* eslint-enable no-console */
+  }
+  
+   try {
     await sendEmail(
       email,
       "[REJECTED] Your request for booking has been rejected",
@@ -77,16 +90,6 @@ const rejectBookingRequestController = async (req, res, next) => {
     );
   } catch (err) {
     return next(err);
-  }
-  
-  try {
-    const tele_message = rejectBookingRequestMessageBuilder(savedBookingRequest);
-    sendMessageToChannel(tele_message);
-  } catch (err) {
-    /* eslint-disable no-console */
-    console.log(err);
-    console.log("Channel message not sent");
-    /* eslint-enable no-console */
   }
   
   return res.status(ACCEPTED).json({
