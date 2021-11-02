@@ -16,7 +16,7 @@ const getAllRecurringBookingController = async (req, res, next) => {
   }
 
   const returnRecurringBooking = recurringBookings.map((recurringBooking) => {
-    const { id, email, notes, venue, cca, startDate, endDate } = recurringBooking;
+    const { id, email, notes, venue, cca, startDate, endDate, dayOfTheWeek} = recurringBooking;
     //const startDate = convertUnixToDateString(recurringBooking.startDate);
     //const endDate = convertUnixToDateString(recurringBooking.endDate);
     const timingSlots = recurringBooking.timingSlots.map((timingSlot) =>
@@ -32,6 +32,7 @@ const getAllRecurringBookingController = async (req, res, next) => {
       notes,
       venue,
       cca,
+	  dayOfTheWeek,
     };
   });
 

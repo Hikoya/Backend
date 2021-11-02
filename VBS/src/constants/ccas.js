@@ -87,20 +87,20 @@ const CCAData = {
     category: "committee",
     workload: "intermediate",
   },
-  Yearbook: {
+  "Yearbook": {
     category: "committee",
     workload: "intermediate",
   },
 
-  acaKE: {
+  "acaKE": {
     category: "cultural",
     workload: "intermediate",
   },
-  BandXY: {
+  "BandXY": {
     category: "cultural",
     workload: "major",
   },
-  Choir: {
+  "Choir": {
     category: "cultural",
     workload: "major",
   },
@@ -120,11 +120,11 @@ const CCAData = {
     category: "cultural",
     workload: "major",
   },
-  KEnsemble: {
+  "KEnsemble": {
     category: "cultural",
     workload: "major",
   },
-  Amplitude: {
+  "Amplitude": {
     category: "productions",
     workload: "intermediate",
   },
@@ -132,7 +132,7 @@ const CCAData = {
     category: "productions",
     workload: "major",
   },
-  Hallplay: {
+  "Hallplay": {
     category: "productions",
     workload: "major",
   },
@@ -196,7 +196,7 @@ const CCAData = {
     category: "sports",
     workload: "major",
   },
-  Softball: {
+  "Softball": {
     category: "sports",
     workload: "major",
   },
