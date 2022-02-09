@@ -1,0 +1,27 @@
+{
+  "name": "cca-attendance",
+  "version": "1.0.0",
+  "description": "KE Web CCA Attendance System",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keviiweb/backend/issues"
+  },
+  "homepage": "https://github.com/keviiweb/backend#readme",
+  "dependencies": {
+    "body-parser": "1.19.1",
+    "cookie-parser": "1.4.6",
+    "cors": "2.8.5",
+    "dotenv": "16.0.0",
+    "express": "4.17.2",
+    "mysql": "2.18.1",
+    "nodemon": "2.0.15",
+    "prettier": "2.5.1"
+  }
+}
